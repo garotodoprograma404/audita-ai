@@ -1,0 +1,90 @@
+Audita Aí;  por Garoto do Programa · dados oficiais do TSE · 1º turno 2026
+
+[1/5] baixando os boletins de urna de BA
+   baixando https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/buweb/bweb_1t_BA_051020261403.zip
+   baixando https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/buweb/bweb_1t_BA_051020261403.zip.sha512
+
+[2/5] integridade: o arquivo é idêntico ao publicado? (SHA-512)
+   TSE publicou: 8fc0b0c6e926af2c9554de33d5ed1f7c…
+   calculei:     8fc0b0c6e926af2c9554de33d5ed1f7c…
+   ✓ idêntico ao publicado pelo TSE
+
+[3/5] consistência: em cada seção, a soma dos votos bate com quem compareceu?
+   Presidente          35.476 de 35.476  seções  ✓
+   Governador          35.476 de 35.476  seções  ✓
+   Senador             35.476 de 35.476  seções  ✓  (cada eleitor dá 2 votos)
+   Deputado Federal    35.476 de 35.476  seções  ✓
+   Deputado Estadual   35.476 de 35.476  seções  ✓
+
+[4/5] totalização: a soma de TODOS os boletins bate com o resultado oficial?
+   Presidente  ✓
+      eleitores aptos                                  11.312.752 = 11.312.752 ✓
+      compareceram                                      9.053.601 = 9.053.601  ✓
+      faltaram                                          2.259.151 = 2.259.151  ✓
+      votos em branco                                     154.936 = 154.936    ✓
+      votos nulos (digitados + técnicos)                  338.374 = 338.374    ✓
+      nominais (válidos + sub judice + nulos técnicos)  8.560.542 = 8.560.542  ✓
+      votos de cada candidato                                  12 de 12      ✓
+   Governador  ✓
+      eleitores aptos                                  11.304.314 = 11.304.314 ✓
+      compareceram                                      9.046.179 = 9.046.179  ✓
+      faltaram                                          2.258.135 = 2.258.135  ✓
+      votos em branco                                     233.096 = 233.096    ✓
+      votos nulos (digitados + técnicos)                  521.993 = 521.993    ✓
+      nominais (válidos + sub judice + nulos técnicos)  8.291.090 = 8.291.090  ✓
+      votos de cada candidato                                   6 de 6       ✓
+   Senador  ✓
+      eleitores aptos                                  11.304.314 = 11.304.314 ✓
+      compareceram                                      9.046.179 = 9.046.179  ✓
+      faltaram                                          2.258.135 = 2.258.135  ✓
+      votos em branco                                   1.218.996 = 1.218.996  ✓
+      votos nulos (digitados + técnicos)                2.454.953 = 2.454.953  ✓
+      nominais (válidos + sub judice + nulos técnicos) 14.418.409 = 14.418.409 ✓
+      votos de cada candidato                                  10 de 10      ✓
+   Deputado Federal  ✓
+      eleitores aptos                                  11.304.314 = 11.304.314 ✓
+      compareceram                                      9.046.179 = 9.046.179  ✓
+      faltaram                                          2.258.135 = 2.258.135  ✓
+      votos em branco                                     405.559 = 405.559    ✓
+      votos nulos (digitados + técnicos)                  358.729 = 358.729    ✓
+      nominais (válidos + sub judice + nulos técnicos)  8.004.069 = 8.004.069  ✓
+      votos de legenda                                    280.546 = 280.546    ✓
+      votos de cada candidato                                 502 de 502     ✓
+   Deputado Estadual  ✓
+      eleitores aptos                                  11.304.314 = 11.304.314 ✓
+      compareceram                                      9.046.179 = 9.046.179  ✓
+      faltaram                                          2.258.135 = 2.258.135  ✓
+      votos em branco                                     463.958 = 463.958    ✓
+      votos nulos (digitados + técnicos)                  395.042 = 395.042    ✓
+      nominais (válidos + sub judice + nulos técnicos)  7.407.442 = 7.407.442  ✓
+      votos de legenda                                    780.491 = 780.491    ✓
+      votos de cada candidato                                 612 de 612     ✓
+   ✓ tudo bateu
+
+   raio-X do estado
+   35.476 seções · 11.312.752 aptos · 2.259.151 faltaram → abstenção de 19,97%
+   menos faltosos: Barra Da Estiva (13,1%), Valente (13,6%), Dom Basílio (14,0%)
+   mais faltosos:  Rio Do Pires (30,6%), Mansidão (30,5%), Gongogi (30,4%)
+
+[5/5] e se fosse uma pesquisa? 5.000 sorteios de 2.000 eleitores
+    16,5% 
+    17,0% 
+    17,5% █
+    18,0% ███
+    18,5% ██████████
+    19,0% ████████████████████
+    19,5% ██████████████████████████████
+    20,0% ████████████████████████████████████████
+    20,5% ██████████████████████████████████
+    21,0% █████████████████████
+    21,5% █████████
+    22,0% ███
+    22,5% █
+    23,0% 
+    23,5% 
+   valor real: 19,97%  ·  margem pela fórmula: ±1,8 pontos
+   94,9% das 5.000 pesquisas simuladas caíram dentro da margem
+
+   não é pesquisa nem previsão: é matemática em cima de um resultado que já aconteceu.
+   confere você também;)  github.com/garotodoprograma404/audita-ai
+tempo: 6:43.54

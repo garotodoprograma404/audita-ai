@@ -1,0 +1,90 @@
+Audita Aí;  por Garoto do Programa · dados oficiais do TSE · 1º turno 2026
+
+[1/5] baixando os boletins de urna de MG
+   já baixado: bweb_1t_MG_051020261403.zip
+   já baixado: bweb_1t_MG_051020261403.zip.sha512
+
+[2/5] integridade: o arquivo é idêntico ao publicado? (SHA-512)
+   TSE publicou: c0d4a82adb1fa1c89447c8a19448c588…
+   calculei:     c0d4a82adb1fa1c89447c8a19448c588…
+   ✓ idêntico ao publicado pelo TSE
+
+[3/5] consistência: em cada seção, a soma dos votos bate com quem compareceu?
+   Presidente          52.062 de 52.062  seções  ✓
+   Governador          52.062 de 52.062  seções  ✓
+   Senador             52.062 de 52.062  seções  ✓  (cada eleitor dá 2 votos)
+   Deputado Federal    52.062 de 52.062  seções  ✓
+   Deputado Estadual   52.062 de 52.062  seções  ✓
+
+[4/5] totalização: a soma de TODOS os boletins bate com o resultado oficial?
+   Presidente  ✓
+      eleitores aptos                                  16.372.372 = 16.372.372 ✓
+      compareceram                                     12.637.274 = 12.637.274 ✓
+      faltaram                                          3.735.098 = 3.735.098  ✓
+      votos em branco                                     268.302 = 268.302    ✓
+      votos nulos (digitados + técnicos)                  392.737 = 392.737    ✓
+      nominais (válidos + sub judice + nulos técnicos) 11.976.796 = 11.976.796 ✓
+      votos de cada candidato                                  12 de 12      ✓
+   Governador  ✓
+      eleitores aptos                                  16.361.188 = 16.361.188 ✓
+      compareceram                                     12.627.167 = 12.627.167 ✓
+      faltaram                                          3.734.021 = 3.734.021  ✓
+      votos em branco                                     658.416 = 658.416    ✓
+      votos nulos (digitados + técnicos)                  556.916 = 556.916    ✓
+      nominais (válidos + sub judice + nulos técnicos) 11.411.835 = 11.411.835 ✓
+      votos de cada candidato                                  11 de 11      ✓
+   Senador  ✓
+      eleitores aptos                                  16.361.188 = 16.361.188 ✓
+      compareceram                                     12.627.167 = 12.627.167 ✓
+      faltaram                                          3.734.021 = 3.734.021  ✓
+      votos em branco                                   2.200.110 = 2.200.110  ✓
+      votos nulos (digitados + técnicos)                2.528.738 = 2.528.738  ✓
+      nominais (válidos + sub judice + nulos técnicos) 20.525.486 = 20.525.486 ✓
+      votos de cada candidato                                  16 de 16      ✓
+   Deputado Federal  ✓
+      eleitores aptos                                  16.361.188 = 16.361.188 ✓
+      compareceram                                     12.627.167 = 12.627.167 ✓
+      faltaram                                          3.734.021 = 3.734.021  ✓
+      votos em branco                                     699.059 = 699.059    ✓
+      votos nulos (digitados + técnicos)                  457.890 = 457.890    ✓
+      nominais (válidos + sub judice + nulos técnicos) 11.142.727 = 11.142.727 ✓
+      votos de legenda (válidos + sub judice)             331.538 = 331.538    ✓
+      votos de cada candidato                                 710 de 710     ✓
+   Deputado Estadual  ✓
+      eleitores aptos                                  16.361.188 = 16.361.188 ✓
+      compareceram                                     12.627.167 = 12.627.167 ✓
+      faltaram                                          3.734.021 = 3.734.021  ✓
+      votos em branco                                     827.100 = 827.100    ✓
+      votos nulos (digitados + técnicos)                  488.949 = 488.949    ✓
+      nominais (válidos + sub judice + nulos técnicos) 10.531.342 = 10.531.342 ✓
+      votos de legenda (válidos + sub judice)             781.888 = 781.888    ✓
+      votos de cada candidato                                 944 de 944     ✓
+   ✓ tudo bateu
+
+   raio-X do estado
+   52.062 seções · 16.372.372 aptos · 3.735.098 faltaram → abstenção de 22,81%
+   menos faltosos: Dores De Campos (14,4%), Piracema (15,0%), Ressaquinha (15,0%)
+   mais faltosos:  Rio Vermelho (40,1%), Santo Antônio Do Itambé (39,6%), Serra Azul De Minas (38,7%)
+
+[5/5] e se fosse uma pesquisa? 5.000 sorteios de 2.000 eleitores
+    19,3% 
+    19,8% 
+    20,3% █
+    20,8% ████
+    21,3% ██████████
+    21,8% ███████████████████████
+    22,3% ███████████████████████████████████
+    22,8% ████████████████████████████████████████
+    23,3% ███████████████████████████████████
+    23,8% ███████████████████████
+    24,3% ██████████
+    24,8% █████
+    25,3% ██
+    25,8% 
+    26,3% 
+    26,8% 
+   valor real: 22,81%  ·  margem pela fórmula: ±1,8 pontos
+   94,5% das 5.000 pesquisas simuladas caíram dentro da margem
+
+   não é pesquisa nem previsão: é matemática em cima de um resultado que já aconteceu.
+   confere você também;)  github.com/garotodoprograma404/audita-ai

@@ -7,6 +7,7 @@ Feito pelo [Garoto do Programa;](https://instagram.com/garotodoprograma) · Pyth
 python3 audita_ai.py        # Acre (o menor estado, ~17 MB)
 python3 audita_ai.py RR     # qualquer estado (ZZ = eleitores no exterior)
 python3 -m unittest -v      # roda os testes (sem internet)
+python3 sabotagem.py        # tenta enganar o auditor (numa cópia)
 ```
 
 ## O que ele confere
@@ -82,6 +83,22 @@ Audita Aí;  por Garoto do Programa · dados oficiais do TSE · 1º turno 2026
    confere você também;)  github.com/garotodoprograma404/audita-ai
 ```
 
+## Resultados: 6 estados (1º turno 2026)
+
+Vocês pediram nos comentários e eu rodei. A saída completa de cada estado está em [`resultados/`](resultados/).
+
+| estado | seções | hash | urna por urna | soma × oficial |
+|---|---:|:---:|:---:|:---:|
+| AC | 2.270 | ✓ | ✓ | ✓ |
+| PA | 20.827 | ✓ | ✓ | ✓ |
+| BA | 35.476 | ✓ | ✓ | ✓ |
+| MG | 52.062 | ✓ | ✓ | ✓ |
+| RJ | 37.675 | ✓ | ✓ | ✓ |
+| SP | 103.656 | ✓ | ✓ | ✓ |
+| **total** | **251.966** | | | **tudo bateu** |
+
+No caminho, o Pará e São Paulo acharam **dois bugs meus** com voto de legenda (os dois explicados logo abaixo, em "Totalização"). Nenhum era da eleição; os dois foram corrigidos, com teste.
+
 ## Como funciona (pra quem quer entender o algoritmo)
 
 **Leitura.** Cada linha do CSV é *uma seção × um cargo × um votável* (candidato, legenda, branco ou nulo). O arquivo é lido **linha por linha** de dentro do zip (streaming), sem pandas e sem descompactar no disco, então roda até em computador fraquinho. O TSE usa `latin-1` e `;`. E o CSV entrega tudo como **texto**: `"5" + "2"` dá `"52"`, então converte com `int()` antes de somar.
@@ -91,6 +108,8 @@ Audita Aí;  por Garoto do Programa · dados oficiais do TSE · 1º turno 2026
 **Totalização.** Baixa o mesmo JSON que alimenta o site [resultados.tse.jus.br](https://resultados.tse.jus.br) e compara com a soma dos boletins. Dois detalhes que pegam muita gente:
 - **Nulo técnico:** o boletim conta o voto no número que o eleitor digitou. Se aquele candidato teve o registro indeferido, o voto vira *nulo técnico* no resultado oficial. Por isso: nulos do boletim + votos em números que não estão na lista oficial = total de nulos oficial.
 - **Anulado sub judice:** candidato com recurso pendente aparece na lista, mas os votos dele não entram nos *válidos*. Por isso a linha "nominais" soma válidos + sub judice + nulos técnicos.
+- **Partido sub judice (voto de legenda):** vale o mesmo pro partido. Se o registro do partido está em julgamento, o boletim conta a legenda dele normalmente, mas o oficial zera os válidos (`tvtl`) e guarda o total apurado em `tval`. A primeira versão do Audita Aí comparava só com `tvtl` e acusou **491 votos de diferença no Pará** (1º turno 2026). Não era a eleição, era o programa: corrigido para comparar com os votos apurados, com teste.
+- **Partido barrado (voto de legenda):** se o partido foi barrado da disputa daquele cargo, ele some da lista oficial, mas a urna pode ter aceitado o número dele. O boletim conta como legenda e o oficial joga em *nulo técnico*, igualzinho ao candidato barrado. Pegou em **São Paulo** (1º turno 2026, deputado federal, 1.173 votos). Também corrigido, com teste.
 
 **Abstenção.** É calculada no cargo de Presidente, porque todo eleitor vota nele. Quem vota em trânsito só pode votar pra presidente, então o número de aptos muda de um cargo pro outro (dá pra ver isso no passo 4).
 
@@ -107,6 +126,24 @@ Se a matemática estiver certa, **~95%** das pesquisas simuladas caem dentro da 
 ✓ **Prova** que o arquivo de boletins que você baixou é o publicado pelo TSE (hash), que cada boletim fecha a conta da própria seção e que a soma de todos os boletins é exatamente o resultado oficial divulgado.
 
 ✗ **Não prova** nada sobre o que acontece *antes* do boletim (a urna em si, o software dela, a votação). Pra isso existem outros mecanismos públicos: teste público de segurança, teste de integridade no dia da eleição (a antiga "votação paralela"), conferência do boletim impresso pelos fiscais de partido e assinatura digital de cada boletim. Bom próximo passo pra quem quiser evoluir o projeto: comparar com a **foto do boletim impresso** da sua seção.
+
+## Sabotagem: tenta enganar o Audita Aí
+
+Duvida que ele pega? Sabota. O `sabotagem.py` copia o boletim que você baixou, muda **UM voto na cópia** (o original e a urna ficam intactos) e roda as três conferências contra ela:
+
+```bash
+python3 sabotagem.py                  # tira 1 voto de um candidato e dá pra outro, na mesma seção
+python3 sabotagem.py --golpe branco   # enfia 1 voto em branco a mais numa seção
+```
+
+Rodando no Acre:
+
+| golpe | digital (SHA-512) | urna por urna | soma contra o oficial |
+|---|---|---|---|
+| `troca` | ✗ mudou | **✓ passa** (a seção continua fechando!) | ✗ 10 de 12 candidatos |
+| `branco` | ✗ mudou | ✗ 2.269 de 2.270 | ✗ brancos 5.580 ≠ 5.579 |
+
+O golpe da troca passa pela conta da urna, e é por isso que tem mais de uma conferência: **auditoria boa é camada em cima de camada**.
 
 ## Opções
 

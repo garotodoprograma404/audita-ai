@@ -1,0 +1,90 @@
+Audita Aí;  por Garoto do Programa · dados oficiais do TSE · 1º turno 2026
+
+[1/5] baixando os boletins de urna de SP
+   já baixado: bweb_1t_SP_051020261403.zip
+   já baixado: bweb_1t_SP_051020261403.zip.sha512
+
+[2/5] integridade: o arquivo é idêntico ao publicado? (SHA-512)
+   TSE publicou: 00c8b12de9077c8263c87ba91d1300e2…
+   calculei:     00c8b12de9077c8263c87ba91d1300e2…
+   ✓ idêntico ao publicado pelo TSE
+
+[3/5] consistência: em cada seção, a soma dos votos bate com quem compareceu?
+   Presidente         103.656 de 103.656 seções  ✓
+   Governador         103.656 de 103.656 seções  ✓
+   Senador            103.656 de 103.656 seções  ✓  (cada eleitor dá 2 votos)
+   Deputado Federal   103.656 de 103.656 seções  ✓
+   Deputado Estadual  103.656 de 103.656 seções  ✓
+
+[4/5] totalização: a soma de TODOS os boletins bate com o resultado oficial?
+   Presidente  ✓
+      eleitores aptos                                  34.122.892 = 34.122.892 ✓
+      compareceram                                     26.431.992 = 26.431.992 ✓
+      faltaram                                          7.690.900 = 7.690.900  ✓
+      votos em branco                                     632.801 = 632.801    ✓
+      votos nulos (digitados + técnicos)                  916.243 = 916.243    ✓
+      nominais (válidos + sub judice + nulos técnicos) 24.884.303 = 24.884.303 ✓
+      votos de cada candidato                                  12 de 12      ✓
+   Governador  ✓
+      eleitores aptos                                  34.081.699 = 34.081.699 ✓
+      compareceram                                     26.394.256 = 26.394.256 ✓
+      faltaram                                          7.687.443 = 7.687.443  ✓
+      votos em branco                                   1.348.262 = 1.348.262  ✓
+      votos nulos (digitados + técnicos)                1.915.481 = 1.915.481  ✓
+      nominais (válidos + sub judice + nulos técnicos) 23.152.883 = 23.152.883 ✓
+      votos de cada candidato                                   5 de 5       ✓
+   Senador  ✓
+      eleitores aptos                                  34.081.699 = 34.081.699 ✓
+      compareceram                                     26.394.256 = 26.394.256 ✓
+      faltaram                                          7.687.443 = 7.687.443  ✓
+      votos em branco                                   4.291.919 = 4.291.919  ✓
+      votos nulos (digitados + técnicos)                5.109.958 = 5.109.958  ✓
+      nominais (válidos + sub judice + nulos técnicos) 43.517.644 = 43.517.644 ✓
+      votos de cada candidato                                  13 de 13      ✓
+   Deputado Federal  ✓
+      eleitores aptos                                  34.081.699 = 34.081.699 ✓
+      compareceram                                     26.394.256 = 26.394.256 ✓
+      faltaram                                          7.687.443 = 7.687.443  ✓
+      votos em branco                                   1.561.578 = 1.561.578  ✓
+      votos nulos (digitados + técnicos)                1.128.132 = 1.128.132  ✓
+      nominais (válidos + sub judice + nulos técnicos) 23.025.576 = 23.025.576 ✓
+      votos de legenda (válidos + sub judice)             685.880 = 685.880    ✓
+      votos de cada candidato                                1045 de 1045    ✓
+   Deputado Estadual  ✓
+      eleitores aptos                                  34.081.699 = 34.081.699 ✓
+      compareceram                                     26.394.256 = 26.394.256 ✓
+      faltaram                                          7.687.443 = 7.687.443  ✓
+      votos em branco                                   1.847.209 = 1.847.209  ✓
+      votos nulos (digitados + técnicos)                1.220.728 = 1.220.728  ✓
+      nominais (válidos + sub judice + nulos técnicos) 21.831.011 = 21.831.011 ✓
+      votos de legenda (válidos + sub judice)           1.495.811 = 1.495.811  ✓
+      votos de cada candidato                                1346 de 1346    ✓
+   ✓ tudo bateu
+
+   raio-X do estado
+   103.656 seções · 34.122.892 aptos · 7.690.900 faltaram → abstenção de 22,54%
+   menos faltosos: Vitória Brasil (14,3%), Cajobi (15,2%), Palmares Paulista (16,3%)
+   mais faltosos:  Ilha Comprida (32,8%), Barra Do Turvo (31,6%), Rosana (31,4%)
+
+[5/5] e se fosse uma pesquisa? 5.000 sorteios de 2.000 eleitores
+    19,0% 
+    19,5% 
+    20,0% █
+    20,5% ████
+    21,0% ██████████
+    21,5% ███████████████████████
+    22,0% ██████████████████████████████████
+    22,5% ████████████████████████████████████████
+    23,0% ████████████████████████████████████
+    23,5% ████████████████████████
+    24,0% ██████████
+    24,5% █████
+    25,0% ██
+    25,5% 
+    26,0% 
+    26,5% 
+   valor real: 22,54%  ·  margem pela fórmula: ±1,8 pontos
+   94,2% das 5.000 pesquisas simuladas caíram dentro da margem
+
+   não é pesquisa nem previsão: é matemática em cima de um resultado que já aconteceu.
+   confere você também;)  github.com/garotodoprograma404/audita-ai

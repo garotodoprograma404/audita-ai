@@ -1,0 +1,90 @@
+Audita Aí;  por Garoto do Programa · dados oficiais do TSE · 1º turno 2026
+
+[1/5] baixando os boletins de urna de RJ
+   baixando https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/buweb/bweb_1t_RJ_051020261403.zip
+   baixando https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/buweb/bweb_1t_RJ_051020261403.zip.sha512
+
+[2/5] integridade: o arquivo é idêntico ao publicado? (SHA-512)
+   TSE publicou: 15fec8c7104496cb39379030cf3fc732…
+   calculei:     15fec8c7104496cb39379030cf3fc732…
+   ✓ idêntico ao publicado pelo TSE
+
+[3/5] consistência: em cada seção, a soma dos votos bate com quem compareceu?
+   Presidente          37.675 de 37.675  seções  ✓
+   Governador          37.675 de 37.675  seções  ✓
+   Senador             37.675 de 37.675  seções  ✓  (cada eleitor dá 2 votos)
+   Deputado Federal    37.675 de 37.675  seções  ✓
+   Deputado Estadual   37.675 de 37.675  seções  ✓
+
+[4/5] totalização: a soma de TODOS os boletins bate com o resultado oficial?
+   Presidente  ✓
+      eleitores aptos                                  12.857.648 = 12.857.648 ✓
+      compareceram                                      9.859.802 = 9.859.802  ✓
+      faltaram                                          2.997.846 = 2.997.846  ✓
+      votos em branco                                     201.979 = 201.979    ✓
+      votos nulos (digitados + técnicos)                  288.123 = 288.123    ✓
+      nominais (válidos + sub judice + nulos técnicos)  9.370.087 = 9.370.087  ✓
+      votos de cada candidato                                  12 de 12      ✓
+   Governador  ✓
+      eleitores aptos                                  12.842.517 = 12.842.517 ✓
+      compareceram                                      9.845.867 = 9.845.867  ✓
+      faltaram                                          2.996.650 = 2.996.650  ✓
+      votos em branco                                     501.537 = 501.537    ✓
+      votos nulos (digitados + técnicos)                  949.703 = 949.703    ✓
+      nominais (válidos + sub judice + nulos técnicos)  8.669.038 = 8.669.038  ✓
+      votos de cada candidato                                   8 de 8       ✓
+   Senador  ✓
+      eleitores aptos                                  12.842.517 = 12.842.517 ✓
+      compareceram                                      9.845.867 = 9.845.867  ✓
+      faltaram                                          2.996.650 = 2.996.650  ✓
+      votos em branco                                   1.700.766 = 1.700.766  ✓
+      votos nulos (digitados + técnicos)                2.061.486 = 2.061.486  ✓
+      nominais (válidos + sub judice + nulos técnicos) 15.929.482 = 15.929.482 ✓
+      votos de cada candidato                                  15 de 15      ✓
+   Deputado Federal  ✓
+      eleitores aptos                                  12.842.517 = 12.842.517 ✓
+      compareceram                                      9.845.867 = 9.845.867  ✓
+      faltaram                                          2.996.650 = 2.996.650  ✓
+      votos em branco                                     518.397 = 518.397    ✓
+      votos nulos (digitados + técnicos)                  469.524 = 469.524    ✓
+      nominais (válidos + sub judice + nulos técnicos)  8.605.470 = 8.605.470  ✓
+      votos de legenda (válidos + sub judice)             276.699 = 276.699    ✓
+      votos de cada candidato                                 765 de 765     ✓
+   Deputado Estadual  ✓
+      eleitores aptos                                  12.842.517 = 12.842.517 ✓
+      compareceram                                      9.845.867 = 9.845.867  ✓
+      faltaram                                          2.996.650 = 2.996.650  ✓
+      votos em branco                                     570.853 = 570.853    ✓
+      votos nulos (digitados + técnicos)                  457.145 = 457.145    ✓
+      nominais (válidos + sub judice + nulos técnicos)  8.284.093 = 8.284.093  ✓
+      votos de legenda (válidos + sub judice)             536.018 = 536.018    ✓
+      votos de cada candidato                                1135 de 1135    ✓
+   ✓ tudo bateu
+
+   raio-X do estado
+   37.675 seções · 12.857.648 aptos · 2.997.846 faltaram → abstenção de 23,32%
+   menos faltosos: Macuco (15,0%), Comendador Levy Gasparian (15,1%), Cordeiro (16,3%)
+   mais faltosos:  Mangaratiba (26,7%), Valença (26,2%), Rio De Janeiro (26,1%)
+
+[5/5] e se fosse uma pesquisa? 5.000 sorteios de 2.000 eleitores
+    20,3% 
+    20,8% █
+    21,3% █████
+    21,8% ███████████
+    22,3% ████████████████████████
+    22,8% ██████████████████████████████████
+    23,3% ████████████████████████████████████████
+    23,8% ███████████████████████████████████
+    24,3% ████████████████████████
+    24,8% ██████████
+    25,3% █████
+    25,8% ██
+    26,3% 
+    26,8% 
+    27,3% 
+   valor real: 23,32%  ·  margem pela fórmula: ±1,9 pontos
+   94,2% das 5.000 pesquisas simuladas caíram dentro da margem
+
+   não é pesquisa nem previsão: é matemática em cima de um resultado que já aconteceu.
+   confere você também;)  github.com/garotodoprograma404/audita-ai
+tempo: 7:24.88

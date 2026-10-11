@@ -1,0 +1,89 @@
+Audita Aí;  por Garoto do Programa · dados oficiais do TSE · 1º turno 2026
+
+[1/5] baixando os boletins de urna de AC
+   já baixado: bweb_1t_AC_051020261403.zip
+   já baixado: bweb_1t_AC_051020261403.zip.sha512
+
+[2/5] integridade: o arquivo é idêntico ao publicado? (SHA-512)
+   TSE publicou: c095164588a0ad4f46717e081f51eab2…
+   calculei:     c095164588a0ad4f46717e081f51eab2…
+   ✓ idêntico ao publicado pelo TSE
+
+[3/5] consistência: em cada seção, a soma dos votos bate com quem compareceu?
+   Presidente           2.270 de 2.270   seções  ✓
+   Governador           2.270 de 2.270   seções  ✓
+   Senador              2.270 de 2.270   seções  ✓  (cada eleitor dá 2 votos)
+   Deputado Federal     2.270 de 2.270   seções  ✓
+   Deputado Estadual    2.270 de 2.270   seções  ✓
+
+[4/5] totalização: a soma de TODOS os boletins bate com o resultado oficial?
+   Presidente  ✓
+      eleitores aptos                                     613.742 = 613.742    ✓
+      compareceram                                        488.330 = 488.330    ✓
+      faltaram                                            125.412 = 125.412    ✓
+      votos em branco                                       5.579 = 5.579      ✓
+      votos nulos (digitados + técnicos)                   13.685 = 13.685     ✓
+      nominais (válidos + sub judice + nulos técnicos)    469.089 = 469.089    ✓
+      votos de cada candidato                                  12 de 12      ✓
+   Governador  ✓
+      eleitores aptos                                     613.316 = 613.316    ✓
+      compareceram                                        487.971 = 487.971    ✓
+      faltaram                                            125.345 = 125.345    ✓
+      votos em branco                                       8.926 = 8.926      ✓
+      votos nulos (digitados + técnicos)                   39.398 = 39.398     ✓
+      nominais (válidos + sub judice + nulos técnicos)    439.647 = 439.647    ✓
+      votos de cada candidato                                   6 de 6       ✓
+   Senador  ✓
+      eleitores aptos                                     613.316 = 613.316    ✓
+      compareceram                                        487.971 = 487.971    ✓
+      faltaram                                            125.345 = 125.345    ✓
+      votos em branco                                      38.954 = 38.954     ✓
+      votos nulos (digitados + técnicos)                   61.686 = 61.686     ✓
+      nominais (válidos + sub judice + nulos técnicos)    875.302 = 875.302    ✓
+      votos de cada candidato                                   8 de 8       ✓
+   Deputado Federal  ✓
+      eleitores aptos                                     613.316 = 613.316    ✓
+      compareceram                                        487.971 = 487.971    ✓
+      faltaram                                            125.345 = 125.345    ✓
+      votos em branco                                      11.808 = 11.808     ✓
+      votos nulos (digitados + técnicos)                    7.551 = 7.551      ✓
+      nominais (válidos + sub judice + nulos técnicos)    454.494 = 454.494    ✓
+      votos de legenda (válidos + sub judice)              14.163 = 14.163     ✓
+      votos de cada candidato                                  87 de 87      ✓
+   Deputado Estadual  ✓
+      eleitores aptos                                     613.316 = 613.316    ✓
+      compareceram                                        487.971 = 487.971    ✓
+      faltaram                                            125.345 = 125.345    ✓
+      votos em branco                                       9.032 = 9.032      ✓
+      votos nulos (digitados + técnicos)                    5.767 = 5.767      ✓
+      nominais (válidos + sub judice + nulos técnicos)    446.800 = 446.800    ✓
+      votos de legenda (válidos + sub judice)              26.391 = 26.391     ✓
+      votos de cada candidato                                 222 de 222     ✓
+   ✓ tudo bateu
+
+   raio-X do estado
+   2.270 seções · 613.742 aptos · 125.412 faltaram → abstenção de 20,43%
+   menos faltosos: Rodrigues Alves (16,1%), Mâncio Lima (17,5%), Senador Guiomard (18,6%)
+   mais faltosos:  Santa Rosa Do Purus (26,6%), Feijó (25,0%), Jordão (24,8%)
+
+[5/5] e se fosse uma pesquisa? 5.000 sorteios de 2.000 eleitores
+    16,9% 
+    17,4% 
+    17,9% █
+    18,4% ███
+    18,9% ██████████
+    19,4% █████████████████████
+    19,9% █████████████████████████████████
+    20,4% ████████████████████████████████████████
+    20,9% ███████████████████████████████████
+    21,4% ███████████████████████
+    21,9% ██████████
+    22,4% ███
+    22,9% █
+    23,4% 
+    23,9% 
+   valor real: 20,43%  ·  margem pela fórmula: ±1,8 pontos
+   95,3% das 5.000 pesquisas simuladas caíram dentro da margem
+
+   não é pesquisa nem previsão: é matemática em cima de um resultado que já aconteceu.
+   confere você também;)  github.com/garotodoprograma404/audita-ai
