@@ -106,6 +106,38 @@ class TestLeitura(unittest.TestCase):
         adulterado = {**OFICIAL_PRESIDENTE, "e": {"te": "20", "c": "16", "a": "5"}}
         self.assertFalse(A.conferir_totalizacao(self.cargos["1"], adulterado).ok)
 
+    def test_legenda_de_partido_sub_judice(self):
+        # Pará 2026: o boletim conta a legenda do partido 33; o oficial zera os válidos (tvtl) e guarda em tval.
+        cargo = A.Cargo("Deputado Federal", "6258")
+        cargo.secoes["x"] = A.Secao("TESTE", aptos=10, compareceram=8, faltaram=2, votos=8)
+        cargo.por_tipo.update({"Nominal": 5, "Legenda": 3})
+        cargo.por_numero["1010"] = 5
+        oficial = {
+            "e": {"te": "10", "c": "8", "a": "2"},
+            "v": {"vb": "0", "tvn": "0", "vnom": "5", "vl": "1"},
+            "carg": [{"agr": [{"par": [
+                {"n": "10", "tvtl": "1", "tval": "1", "cand": [{"n": "1010", "vap": "5", "dvt": "Válido"}]},
+                {"n": "33", "tvtl": "0", "tval": "2", "dvt": "Anulado sub judice", "cand": []},
+            ]}]}],
+        }
+        self.assertTrue(A.conferir_totalizacao(cargo, oficial).ok)
+
+    def test_legenda_de_partido_barrado_vira_nulo_tecnico(self):
+        # SP 2026: a urna aceitou a legenda do partido 29, que não está na lista oficial: vira nulo técnico.
+        cargo = A.Cargo("Deputado Federal", "6258")
+        cargo.secoes["x"] = A.Secao("TESTE", aptos=10, compareceram=8, faltaram=2, votos=8)
+        cargo.por_tipo.update({"Nominal": 5, "Legenda": 3})
+        cargo.por_numero["1010"] = 5
+        cargo.por_legenda.update({"10": 1, "29": 2})
+        oficial = {
+            "e": {"te": "10", "c": "8", "a": "2"},
+            "v": {"vb": "0", "tvn": "2", "vnom": "5", "vnt": "2", "vl": "1"},
+            "carg": [{"agr": [{"par": [
+                {"n": "10", "tvtl": "1", "tval": "1", "cand": [{"n": "1010", "vap": "5", "dvt": "Válido"}]},
+            ]}]}],
+        }
+        self.assertTrue(A.conferir_totalizacao(cargo, oficial).ok, A.conferir_totalizacao(cargo, oficial).linhas)
+
     def test_abstencao(self):
         aptos, faltaram, taxa = A.abstencao(A.cargo_de_referencia(self.cargos))
         self.assertEqual((aptos, faltaram), (20, 4))

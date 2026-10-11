@@ -159,6 +159,7 @@ class Cargo:
     secoes: dict = field(default_factory=dict)     # (município, zona, seção) -> Secao
     por_tipo: collections.Counter = field(default_factory=collections.Counter)    # Nominal/Legenda/Branco/Nulo
     por_numero: collections.Counter = field(default_factory=collections.Counter)  # número do votável -> votos
+    por_legenda: collections.Counter = field(default_factory=collections.Counter)  # número do partido -> votos
 
 
 def ler_boletins(caminho_zip: Path) -> dict[str, Cargo]:
@@ -185,6 +186,8 @@ def ler_boletins(caminho_zip: Path) -> dict[str, Cargo]:
                 cargo.por_tipo[linha["DS_TIPO_VOTAVEL"]] += votos
                 if linha["DS_TIPO_VOTAVEL"] == "Nominal":
                     cargo.por_numero[linha["NR_VOTAVEL"]] += votos
+                elif linha["DS_TIPO_VOTAVEL"] == "Legenda":
+                    cargo.por_legenda[linha["NR_VOTAVEL"]] += votos
     return cargos
 
 
@@ -247,11 +250,16 @@ def conferir_totalizacao(cargo: Cargo, oficial: dict) -> Totalizacao:
     Detalhe que pega muita gente: o boletim conta o voto no número digitado. Se o candidato teve o registro
     barrado, o resultado oficial joga esses votos em "nulos técnicos" (vnt) ou "anulados sub judice".
     Então: votos nominais nos boletins = válidos nominais + sub judice + nulos técnicos.
+    Vale o mesmo pro PARTIDO (voto de legenda): partido barrado some da lista oficial e a legenda dele
+    vira nulo técnico (achado em SP, 1º turno 2026); partido sub judice fica em "tval" (achado no Pará).
     """
     e, v = oficial["e"], oficial["v"]
-    candidatos = [c for agr in oficial["carg"][0]["agr"] for par in agr["par"] for c in par["cand"]]
+    partidos = [par for agr in oficial["carg"][0]["agr"] for par in agr["par"]]
+    candidatos = [c for par in partidos for c in par["cand"]]
     numeros_oficiais = {c["n"] for c in candidatos}
     nulos_tecnicos = sum(n for numero, n in cargo.por_numero.items() if numero not in numeros_oficiais)
+    partidos_oficiais = {p.get("n") for p in partidos}
+    legenda_nula = sum(n for numero, n in cargo.por_legenda.items() if numero not in partidos_oficiais)
     sub_judice = sum(int(c["vap"]) for c in candidatos if c.get("dvt") != "Válido")
     t = Totalizacao(cargo.nome)
     t.linhas = [
@@ -259,13 +267,15 @@ def conferir_totalizacao(cargo: Cargo, oficial: dict) -> Totalizacao:
         ("compareceram", sum(s.compareceram for s in cargo.secoes.values()), int(e["c"])),
         ("faltaram", sum(s.faltaram for s in cargo.secoes.values()), int(e["a"])),
         ("votos em branco", cargo.por_tipo["Branco"], int(v["vb"])),
-        ("votos nulos (digitados + técnicos)", cargo.por_tipo["Nulo"] + nulos_tecnicos, int(v["tvn"])),
-        ("nominais (válidos + sub judice + nulos técnicos)", cargo.por_tipo["Nominal"],
+        ("votos nulos (digitados + técnicos)", cargo.por_tipo["Nulo"] + nulos_tecnicos + legenda_nula, int(v["tvn"])),
+        ("nominais (válidos + sub judice + nulos técnicos)", cargo.por_tipo["Nominal"] + legenda_nula,
          int(v["vnom"]) + sub_judice + int(v.get("vnt") or 0)),
     ]
     if v.get("vl") is not None:            # só deputado tem voto de legenda (voto só no número do partido)
-        partidos = [par for agr in oficial["carg"][0]["agr"] for par in agr["par"]]
-        t.linhas.append(("votos de legenda", cargo.por_tipo["Legenda"], sum(int(p.get("tvtl") or 0) for p in partidos)))
+        # Igual ao candidato: compara com os votos APURADOS da legenda (tval), não só os válidos (tvtl).
+        # Partido com registro "anulado sub judice" tem tvtl = 0, mas o boletim conta a legenda dele normalmente.
+        t.linhas.append(("votos de legenda (válidos + sub judice)", cargo.por_tipo["Legenda"] - legenda_nula,
+                         sum(int(p.get("tval") or p.get("tvtl") or 0) for p in partidos)))
     t.candidatos = len(candidatos)
     t.candidatos_batem = sum(1 for c in candidatos if cargo.por_numero[c["n"]] == int(c["vap"]))
     return t
